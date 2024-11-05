@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 interface IInteractable
 {
@@ -18,6 +19,8 @@ public class Interactor : MonoBehaviour
     public AudioSource Source;
     public AudioClip pickup, dropoff, alarm;
     int count;
+    float switchTimer;
+    public bool done;
 
     void Awake()
     {
@@ -25,10 +28,23 @@ public class Interactor : MonoBehaviour
         DropoffText.SetActive(false);
         Source = GetComponent<AudioSource>();
         count = 0;
+        switchTimer = 0;
+        done = false;
     }
 
     void Update()
     {
+        if (done)
+        {
+            switchTimer += Time.deltaTime;
+            if(switchTimer > 3.0f)
+            {
+                SceneManager.LoadScene("Cutscene");
+                Debug.Log("change the scene");
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
@@ -52,6 +68,7 @@ public class Interactor : MonoBehaviour
                                 Source.Play();
                                 if(count == 3)
                                 {
+                                    done = true;
                                     Source.clip = alarm;
                                     Source.Play();
                                     FirstPersonMovement.finished = true;
@@ -98,10 +115,11 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    public void Alarm()
-    {
-        Source.clip = alarm;
-        Source.Play();
-    }
+    //public void Alarm()
+    //{
+    //    done = true;
+    //    Source.clip = alarm;
+    //    Source.Play();
+    //}
 
 }
