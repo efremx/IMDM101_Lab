@@ -3,7 +3,7 @@
 [ExecuteInEditMode]
 public class Zoom : MonoBehaviour
 {
-    new Camera camera;
+    Camera camera;
     public float defaultFOV = 60;
     public float maxZoomFOV = 15;
     [Range(0, 1)]

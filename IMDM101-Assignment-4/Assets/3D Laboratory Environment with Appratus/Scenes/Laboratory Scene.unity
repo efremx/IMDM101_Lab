@@ -34767,6 +34767,7 @@ MonoBehaviour:
   pickup: {fileID: 8300000, guid: 49fc7a6e3333e48468ac28abdd22a9d3, type: 3}
   dropoff: {fileID: 8300000, guid: b3e5e5c2b7123e24ebcedb7171b10144, type: 3}
   alarm: {fileID: 8300000, guid: 1fca996b15d52234ebb236cbaf674d48, type: 3}
+  done: 0
 --- !u!82 &1971266767
 AudioSource:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class Interactor : MonoBehaviour
             if(switchTimer > 3.0f)
             {
                 SceneManager.LoadScene("Cutscene");
-                Debug.Log("change the scene");
+ //               Debug.Log("change the scene");
             }
         }
 
